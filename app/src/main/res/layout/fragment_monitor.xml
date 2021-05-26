@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#4000"
+        app:layout_constraintBottom_toBottomOf="@+id/space"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/monitor_card_radius"
+        app:layout_constraintTop_toTopOf="@+id/clInfo" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_card"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:paddingTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="38sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSpeed"
+            app:layout_constraintEnd_toStartOf="@+id/tvSpeed"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="26.4" />
+
+        <TextView
+            android:id="@+id/tvDistanceMetric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="km"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvDistance"
+            app:layout_constraintStart_toStartOf="@+id/tvDistance"
+            app:layout_constraintTop_toBottomOf="@+id/tvDistance" />
+
+        <TextView
+            android:id="@+id/tvSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:paddingTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="56sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvMaxSpeed"
+            app:layout_constraintStart_toEndOf="@+id/tvDistance"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="26.4" />
+
+        <TextView
+            android:id="@+id/tvSpeedMetric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="kmph"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpeed" />
+
+        <TextView
+            android:id="@+id/tvMaxSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:paddingTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/text_high"
+            android:textSize="38sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSpeed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvSpeed"
+            tools:text="26.4" />
+
+        <TextView
+            android:id="@+id/tvMaxSpeedMetric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="kmph"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvMaxSpeed"
+            app:layout_constraintStart_toStartOf="@+id/tvMaxSpeed"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpeed" />
+
+        <TextView
+            android:id="@+id/tvAltitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:paddingTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="38sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvSpeed"
+            app:layout_constraintStart_toStartOf="@+id/tvSpeed"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpeedMetric"
+            tools:text="289" />
+
+        <TextView
+            android:id="@+id/tvAltitudeMetric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="m"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAltitude" />
+
+        <TextView
+            android:id="@+id/tvSinceStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:paddingTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAltitude"
+            app:layout_constraintEnd_toEndOf="@+id/tvDistance"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="@+id/tvDistance"
+            tools:text="26.4" />
+
+        <TextView
+            android:id="@+id/tvSinceStartMetric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="since start"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvSinceStart"
+            app:layout_constraintStart_toStartOf="@+id/tvSinceStart"
+            app:layout_constraintTop_toBottomOf="@+id/tvSinceStart" />
+
+        <TextView
+            android:id="@+id/tvMinMaxAltitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:paddingTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/text_high"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvMaxSpeed"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAltitude"
+            app:layout_constraintStart_toStartOf="@+id/tvMaxSpeed"
+            tools:text="99/365" />
+
+        <TextView
+            android:id="@+id/tvMinMaxAltitudeMetric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="m/m"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvMinMaxAltitude"
+            app:layout_constraintStart_toStartOf="@+id/tvMinMaxAltitude"
+            app:layout_constraintTop_toBottomOf="@+id/tvMinMaxAltitude" />
+
+        <global.msnthrp.whoo.ui.widgets.SwipeableButton
+            android:id="@+id/btnTrip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAltitudeMetric"
+            app:textChecked="Swipe left to stop"
+            app:textUnchecked="Swipe right to start" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

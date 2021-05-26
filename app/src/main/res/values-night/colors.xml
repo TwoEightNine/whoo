@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#000</color>
+    <color name="background_surface">#181818</color>
+
+    <color name="text_high">#fff</color>
+    <color name="text_medium">#ccc</color>
+    <color name="text_low">#999</color>
+
+
+    <color name="icon_on_map">@color/text_high</color>
+    <color name="icon">#fff</color>
+</resources>
