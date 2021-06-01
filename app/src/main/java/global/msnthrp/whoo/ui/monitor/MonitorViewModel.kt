@@ -1,29 +1,33 @@
 package global.msnthrp.whoo.ui.monitor
 
 import androidx.lifecycle.viewModelScope
+import androidx.room.Room
 import global.msnthrp.whoo.data.gps.FakeGpsDataSource
 import global.msnthrp.whoo.data.gps.ServiceGpsDataSource
 import global.msnthrp.whoo.data.trip.MemoryTripDataSource
+import global.msnthrp.whoo.data.trip.room.RoomTripDataSource
 import global.msnthrp.whoo.domain.GpsEvent
 import global.msnthrp.whoo.domain.Trip
 import global.msnthrp.whoo.interactor.MonitorInteractor
 import global.msnthrp.whoo.ui.base.BaseViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.math.roundToInt
 
 
 class MonitorViewModel : BaseViewModel<MonitorState>() {
 
-    private val mockGps = false
+    private val mockGps = true
     private val gpsDataSource = when {
         mockGps -> FakeGpsDataSource()
         else -> ServiceGpsDataSource()
     }
 
     private val interactor = MonitorInteractor(
-        gpsDataSource, MemoryTripDataSource
+        gpsDataSource, RoomTripDataSource
     )
 
     init {
@@ -41,11 +45,15 @@ class MonitorViewModel : BaseViewModel<MonitorState>() {
     override fun createInitialState(): MonitorState = MonitorState.empty()
 
     fun startStopTrip() {
-        val tripStarted = uiState.value.actualTrip.isRunning
-        if (tripStarted) {
-            interactor.stopTrip()
-        } else {
-            interactor.startTrip()
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val tripStarted = uiState.value.actualTrip.isRunning
+                if (tripStarted) {
+                    interactor.stopTrip()
+                } else {
+                    interactor.startTrip()
+                }
+            }
         }
     }
 
