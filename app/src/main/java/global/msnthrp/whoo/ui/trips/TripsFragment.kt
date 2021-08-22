@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import global.msnthrp.whoo.R
 import global.msnthrp.whoo.databinding.FragmentTripsBinding
@@ -31,12 +32,19 @@ class TripsFragment : BaseFragment<FragmentTripsBinding>(R.layout.fragment_trips
             rvTrips.layoutManager = LinearLayoutManager(requireContext())
             rvTrips.adapter = adapter
 
-            toolbar.applyInsetTopPadding()
+            toolbar.setNavigationOnClickListener { onBackPressed() }
+
+            appBar.applyInsetTopPadding()
             rvTrips.applyInsetBottomPadding()
         }
     }
 
     private fun render(state: TripsState) {
         adapter.update(state.trips)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        findNavController().popBackStack()
     }
 }

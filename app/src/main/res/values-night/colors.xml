@@ -7,6 +7,7 @@
     <color name="text_medium">#ccc</color>
     <color name="text_low">#999</color>
 
+    <color name="status_bar">#6000</color>
 
     <color name="icon_on_map">@color/text_high</color>
     <color name="icon">#fff</color>
