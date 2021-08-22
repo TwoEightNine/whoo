@@ -33,10 +33,10 @@ class MonitorViewModel : BaseViewModel<MonitorState>() {
     init {
         initState()
         viewModelScope.launch {
-            async {
+            launch {
                 interactor.gpsEvents.collect(::onGpsEventCollected)
             }
-            async {
+            launch {
                 interactor.trip.collect(::onTripCollected)
             }
         }

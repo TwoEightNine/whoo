@@ -32,14 +32,6 @@ class MonitorInteractor(
     private var actualTrip = Trip()
     private val actualTripFlow = MutableSharedFlow<Trip>(replay = 1)
 
-    init {
-//        runBlocking {
-//            async {
-//                gpsEvents.collect()
-//                trip.collect()
-//            }
-//        }
-    }
 
     fun startTrip() {
         if (tripStarted.compareAndSet(false, true)) {
@@ -61,6 +53,7 @@ class MonitorInteractor(
                     endTime = System.currentTimeMillis()
                 )
             }
+            tripDataSource.updateTrip(actualTrip)
         }
     }
 

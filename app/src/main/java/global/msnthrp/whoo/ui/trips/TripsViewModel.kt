@@ -14,7 +14,7 @@ class TripsViewModel : BaseViewModel<TripsState>() {
     init {
         initState()
         viewModelScope.launch {
-            async {
+            launch {
                 RoomTripDataSource.tripsList.collect { tripList ->
                     updateState { it.copy(trips = tripList) }
                 }

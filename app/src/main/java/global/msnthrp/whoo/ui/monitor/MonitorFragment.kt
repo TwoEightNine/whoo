@@ -54,6 +54,8 @@ class MonitorFragment : BaseFragment<FragmentMonitorBinding>(R.layout.fragment_m
         binding.tvSinceStart.text = state.actualTrip.spentTime.spentUi
 
         val isTripRunning = state.actualTrip.isRunning
+        binding.btnTrip.isChecked = isTripRunning
+
         val auxTextColor = when {
             isTripRunning -> R.color.text_high
             else -> R.color.text_low
